@@ -41,26 +41,26 @@ VALUES (1, 'Relax', 2018),
        (7, 'Tomorrow', 2019),
        (8, 'The day after tomorrow', 2006);
     
-INSERT INTO tracks 
-VALUES (1, 6, 'Spring', 92),
-       (2, 1, 'Kill them all', 185),
-       (3, 5, 'Goodbye my love', 263),
-       (4, 4, 'My Destiny', 168),
-       (5, 2, 'Road to Hell', 66),
-       (6, 3, 'Protection', 236),
-       (7, 8, 'Mess', 193),
-       (8, 7, 'Dawn of Humanity', 229),
-       (9, 6, 'Autumn', 102),
-       (10, 1, 'Night is short', 216),
-       (11, 5, 'Storm', 163),
-       (12, 2, 'Apathy', 298),
-       (13, 6, 'Summer', 109),
-       (14, 8, 'Aftercare', 218),
-       (15, 3, 'Say something to me', 124),
-       (16, 6, 'Winter', 46);
-
-INSERT INTO track_collection 
-VALUES (1, 4), (2, 5), (3, 6), (4, 8), (5, 8), (5, 5), (6, 7), (7, 2), (8, 5), (9, 4), (10,6), (11, 3), (12, 1), (13, 4), (14, 7), (15, 2);
+INSERT INTO tracks VALUES
+    (1, 6, 'Spring', 92),
+    (2, 1, 'Kill them all', 185),
+    (3, 5, 'Goodbye my love', 263),
+    (4, 4, 'My Destiny', 168),
+    (5, 2, 'Road to Hell', 66),
+    (6, 3, 'Protection', 236),
+    (7, 8, 'Mess', 193),
+    (8, 7, 'Dawn of Humanity', 229),
+    (9, 6, 'Autumn', 102),
+    (10, 1, 'Night is short', 216),
+    (11, 5, 'Storm', 163),
+    (12, 2, 'Apathy', 298),
+    (13, 6, 'Summer', 109),
+    (14, 8, 'Aftercare', 218),
+    (15, 3, 'Say something to me', 124),
+    (16, 6, 'Winter', 46);;
+    
+INSERT INTO track_collection VALUES
+    (1, 4), (2, 5), (3, 6), (4, 8), (5, 8), (5, 5), (6, 7), (7, 2), (8, 5), (9, 4), (10,6), (11, 3), (12, 1), (13, 4), (14, 7), (15, 2);
     
 
 
