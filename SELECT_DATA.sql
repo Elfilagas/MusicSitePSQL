@@ -65,14 +65,14 @@ SELECT a.artist_name
        ON aa.artist_id = a.artist_id
        JOIN albums a2
        ON a2.album_id = aa.album_id
- WHERE a.artist_name NOT IN  
-       (SELECT a.artist_name
-          FROM artists a
-               JOIN artist_album aa
-               ON aa.artist_id = a.artist_id
-               JOIN albums a2
-               ON a2.album_id = aa.album_id
-         WHERE a2.release_year = 2020)
+ WHERE a.artist_name NOT IN (
+       SELECT a.artist_name
+         FROM artists a
+              JOIN artist_album aa
+              ON aa.artist_id = a.artist_id
+              JOIN albums a2
+              ON a2.album_id = aa.album_id
+        WHERE a2.release_year = 2020)
  ORDER BY a.artist_name
  
 -- названия сборников, в которых присутствует конкретный исполнитель (выберите сами)
@@ -123,24 +123,28 @@ SELECT a.artist_name
        ON a2.album_id = aa.album_id 
        JOIN tracks t 
        ON t.album_id = a2.album_id 
- WHERE t.duration = (SELECT MIN(duration) FROM tracks)  
+ WHERE t.duration = (
+       SELECT MIN(duration) 
+         FROM tracks)  
  ORDER BY a.artist_name
        
 -- название альбомов, содержащих наименьшее количество треков
-SELECT a.album_name
+SELECT a.album_name 
   FROM albums a
-       LEFT JOIN tracks t 
-       ON t.album_id = a.album_id 
- WHERE t.album_id IN 
-       (SELECT album_id 
-          FROM tracks
-         GROUP BY album_id
-        HAVING count(album_id) = 
-               (SELECT count(track_id)
-                  FROM tracks 
-                 GROUP BY album_id
-                 ORDER BY count
-                 LIMIT 1))
- ORDER BY a.album_name            
+       JOIN tracks t ON a.album_id = t.album_id
+ GROUP BY a.album_id
+HAVING COUNT(t.track_name) = (  
+       SELECT COUNT(t.track_name) 
+         FROM albums a
+              JOIN tracks t 
+              ON a.album_id = t.album_id
+        GROUP BY a.album_id
+        ORDER BY COUNT(t.track_name)
+        LIMIT 1)
+ ORDER BY a.album_name;
+
+
+
+
 
  
